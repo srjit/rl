@@ -28,6 +28,15 @@ class StateGraph(object):
         """
         if(type(state) == Node):
             self._states.append(state)
+
+    def add_states(self, states):
+        """
+    
+        Arguments:
+        - `self`:
+        - `states`:
+        """
+        list(map(self.add_state, states))
          
 
     def add_edge(self, edge):
@@ -39,6 +48,17 @@ class StateGraph(object):
         """
         if(type(edge) == Edge):
             self._edges.append(edge)
+            
+
+    def add_edges(self, edges):
+        """
+    
+        Arguments:
+        - `self`:
+        - `edges`:
+        """
+        list(map(self.add_edge, edges))
+
         
 
     def value(self, state):
