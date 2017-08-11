@@ -24,7 +24,7 @@ def get_edges(nodes):
             Edge("Study", nodes[2], nodes[5], 0.2),
 
             Edge("Study", nodes[3], nodes[4], 0.8),
-            Edge("Pub", nodes[3], nodes[6], 0.0),
+            Edge("Pub", nodes[3], nodes[5], 0.0),
 
             Edge("", nodes[5], nodes[0], 0.2),
             Edge("", nodes[5], nodes[2], 0.4),
@@ -34,3 +34,5 @@ def get_edges(nodes):
 sg = StateGraph()
 sg.add_states(get_nodes())
 sg.add_edges(get_edges(sg._states))
+
+sg.value_function(sg._states[0])

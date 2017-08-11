@@ -59,14 +59,28 @@ class StateGraph(object):
         """
         list(map(self.add_edge, edges))
 
-        
 
-    def value(self, state):
+       
+    def get_all_connected_edges(self, state):
         """
         
+        Arguments:
+        - `states`:
+        """
         
+        return [x for x in self._edges if x._source == state]
+
+        
+        
+
+
+        
+
+    def value_function(self, state):
+        """
        Arguments:
         - `state`:
         """
+        connected_edges = self.get_all_connected_edges(state)
         pass
    
