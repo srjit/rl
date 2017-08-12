@@ -17,6 +17,7 @@ class Node(object):
         self._id = _id
         self._name = name
         self._reward = reward
+        
 
 
 class Edge(object):
@@ -34,6 +35,3 @@ class Edge(object):
         self._source = source
         self._destination = destination
         self._tp = tp
-
-
-

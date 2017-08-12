@@ -34,5 +34,4 @@ def get_edges(nodes):
 sg = StateGraph()
 sg.add_states(get_nodes())
 sg.add_edges(get_edges(sg._states))
-
-sg.value_function(sg._states[0])
+foo = sg.value_function_of_all_states()
