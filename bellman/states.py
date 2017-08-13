@@ -103,6 +103,19 @@ class StateGraph(object):
 
 
     ##calculate value function of all states 
+    # how good is it to be in a particular state - V
+    # state value function
+    # top level state value = transtion probability left (left action value) + 
+    # transtion probability right (right action value)
+    
+    # how good is it to take a particular action - q 
+    # action value function
+    # qπ(s, a) = ℜ ᵃₛ + γ Σ P ᵃ₍ss₎* V_π(s')
+    # Value of taking a specific action at a state
+    # = (tp of going left * left state value) + (tp of going right * right state value)
+    
+    # Now V in terms of itself recursively
+
     def value_function_of_all_states(self):
         """
         """
@@ -113,9 +126,3 @@ class StateGraph(object):
         rewards = [x._reward for x in self._states]
         return rewards - tmp
         
-
-
-
-    
-
-    
