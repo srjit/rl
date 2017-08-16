@@ -61,15 +61,6 @@ class StateGraph(object):
         list(map(self.add_edge, edges))
 
 
-    def print(self):
-        """
-        
-        Arguments:
-        - `self`:
-        """
-        pass        
-
-
        
     def get_all_connected_edges(self, state):
         """
@@ -80,31 +71,17 @@ class StateGraph(object):
         
         return [x for x in self._edges if x._source == state]
 
+
         
     def get_all_connected_states(self, edges):
         """
-    
-    Arguments:
-    - `self`:
-    - `edges`:
-    """
+        Arguments:
+        - `self`:
+        - `edges`:
+        """
         return [x._destination for x in edges]
 
 
-    def _get_tps_of_state(self, state):
-        _tps = [0.0 for x in self._states]
-
-        connected_edges = self.get_all_connected_edges(state)        
-        probs = [edge._tp for edge in connected_edges]
-
-        states_connected_at_edges = self.get_all_connected_states(connected_edges)
-        state_ids = [x._id for x in states_connected_at_edges]
-
-        prob_counter = 0
-        for i in state_ids:
-            _tps[i] = probs[prob_counter]
-            prob_counter+=1
-        return _tps
 
 
     def transition_probability_matrix(self):

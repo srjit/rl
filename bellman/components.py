@@ -18,7 +18,7 @@ class State(object):
         self._reward = reward
 
     
-    def print(self):
+    def _print(self):
         """
         Arguments:
         - `self`:
@@ -49,7 +49,7 @@ class Action(object):
 
 
 
-    def print(self):
+    def _print(self):
         """
         
     Arguments:
