@@ -143,3 +143,35 @@ class StateGraph(object):
                 self.get_lookahead_reward(action)) for action in connected_edges])
 
 
+
+    def optimal_action_value_function(self, index):
+        """
+        
+        Arguments:
+        - `self`:
+        - `index`: Index of the action whose optimal action
+        value has to be calculated
+        """
+        pass
+
+
+
+
+    def optimal_state_value_function(self, index):
+        """
+        Maximum value function over all policies 
+        
+        Arguments:
+        - `self`:
+        - `index`: Index of the state whose optimal 
+        value function has to be calculated
+        """
+        state = self._states[index]
+        actions = self.get_all_connected_edges(state)
+        
+        rewards = [action._destination._reward for action in actions]
+        max_reward_index = rewards.index(max(rewards))
+
+          
+        return actions[max_reward_index]._destination._reward + actions[max_reward_index]._reward
+

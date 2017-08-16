@@ -35,4 +35,4 @@ def get_states_and_actions():
 
 states_and_actions = get_states_and_actions()
 sg = StateGraph(states_and_actions[0], states_and_actions[1])
-print(sg.bellman_expectation_for_state(5))
+print(sg.bellman_expectation_for_state(3))

@@ -23,7 +23,7 @@ def get_states_and_actions():
             Action("Facebook", nodes[1], nodes[0], 0.5, -1),
             Action("Study", nodes[1], nodes[3], 0.5, -2),
 
-            Action("Sleep", nodes[3], nodes[4], 0.5, 0),
+            Action("Sleep", nodes[3], nodes[2], 0.5, 0),
             Action("Study", nodes[3], nodes[5], 0.5, -2),
 
             Action("A1", nodes[4], nodes[1], 0.2, 0),
@@ -36,6 +36,5 @@ def get_states_and_actions():
 
 states_and_actions = get_states_and_actions()
 sg = StateGraph(states_and_actions[0], states_and_actions[1])
-sg.bellman_expectation_for_state(5)
 
-
+foo = sg.optimal_state_value_function(3)
