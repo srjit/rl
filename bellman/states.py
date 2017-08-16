@@ -1,5 +1,5 @@
 import numpy as np
-from components import Node, Edge
+from components import State, Action
 
 __author__ = "Sreejith Sreekumar"
 __email__ = "sreekumar.s@husky.neu.edu"
@@ -27,7 +27,7 @@ class StateGraph(object):
         - `self`:
         - `state`:
         """
-        if(type(state) == Node):
+        if(type(state) == State):
             self._states.append(state)
 
     def add_states(self, states):
@@ -47,7 +47,7 @@ class StateGraph(object):
         - `self`:
         - `edge`:
         """
-        if(type(edge) == Edge):
+        if(type(edge) == Action):
             self._edges.append(edge)
             
 
@@ -59,6 +59,15 @@ class StateGraph(object):
         - `edges`:
         """
         list(map(self.add_edge, edges))
+
+
+    def print(self):
+        """
+        
+        Arguments:
+        - `self`:
+        """
+        pass        
 
 
        
@@ -110,7 +119,6 @@ class StateGraph(object):
     
     # how good is it to take a particular action - q 
     # action value function
-    # qπ(s, a) = ℜ ᵃₛ + γ Σ P ᵃ₍ss₎* V_π(s')
     # Value of taking a specific action at a state
     # = (tp of going left * left state value) + (tp of going right * right state value)
     
@@ -126,3 +134,35 @@ class StateGraph(object):
         rewards = [x._reward for x in self._states]
         return rewards - tmp
         
+
+
+    def get_lookahead_reward(self, action):
+        """
+    
+    Arguments:
+    - `action`:
+    """
+        destination = action._destination
+        actions_from_destination = self.get_all_connected_edges(destination)
+        lookahead_reward = 0
+
+        if len(actions_from_destination) > 0:
+            lookahead_reward = sum([action._tp * action._destination._reward for action in actions_from_destination])
+
+        return lookahead_reward
+
+
+
+    def bellman_expectation_for_state(self, index):
+        """
+        
+        Arguments:
+        - `self`:
+        """
+        state = self._states[index]
+        connected_edges = self.get_all_connected_edges(state)
+
+        return sum([action._tp * (action._reward + 
+                self.get_lookahead_reward(action)) for action in connected_edges])
+
+

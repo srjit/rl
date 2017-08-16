@@ -1,11 +1,10 @@
 
-
 __author__ = "Sreejith Sreekumar"
 __email__ = "sreekumar.s@husky.neu.edu"
 __version__ = "0.0.1"
 
 
-class Node(object):
+class State(object):
     
     def __init__(self, _id, name, reward):
         """
@@ -17,12 +16,23 @@ class Node(object):
         self._id = _id
         self._name = name
         self._reward = reward
-        
 
-
-class Edge(object):
     
-    def __init__(self, action, source, destination, tp):
+    def print(self):
+        """
+        Arguments:
+        - `self`:
+        """
+        print("{" +
+              " Id: "+ str(self._id) +
+              "Name: "+ self._name +
+              "}\n")
+
+
+
+class Action(object):
+    
+    def __init__(self, action, source, destination, tp, reward=0):
         """
         
         Arguments:
@@ -35,3 +45,20 @@ class Edge(object):
         self._source = source
         self._destination = destination
         self._tp = tp
+        self._reward = reward
+
+
+
+    def print(self):
+        """
+        
+    Arguments:
+        - `self`:
+        """
+        print("{" +
+              "Action : "+ self._action +
+              "Source "+ self._source +
+              "}\n")
+
+
+
