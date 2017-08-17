@@ -12,11 +12,11 @@ class State(object):
         self._reward = reward
 
     
-    def _print(self):
-        print("{" +
-              " Id: "+ str(self._id) +
-              "Name: "+ self._name +
-              "}\n")
+    def __str__(self):
+        return "{" + \
+              " Id: "+ str(self._id) + "," + \
+              " Name: "+ self._name + \
+              " }\n"
 
 
 
@@ -39,16 +39,16 @@ class Action(object):
 
 
 
-    def _print(self):
+    def __str__(self):
         """
         
     Arguments:
         - `self`:
         """
-        print("{" +
-              "Action : "+ self._action +
-              "Source "+ self._source +
-              "}\n")
+        return("{" + \
+              " Action : "+ self._action + "," \
+              " Source "+ self._source + \
+              " }\n")
 
 
 
