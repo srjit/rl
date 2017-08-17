@@ -9,76 +9,35 @@ __version__ = "0.0.1"
 class StateGraph(object):
     
     def __init__(self, states=[], edges=[], discounting_factor=0.5):
-        """
-        
-        Arguments:
-        - `states`:
-        - `edges`:
-        """
         self._states = states
         self._edges = edges
         self._discounting_factor = discounting_factor
 
 
     def add_state(self, state):
-        """
-    
-        Arguments:
-        - `self`:
-        - `state`:
-        """
         if(type(state) == State):
             self._states.append(state)
 
     def add_states(self, states):
-        """
-    
-        Arguments:
-        - `self`:
-        - `states`:
-        """
         list(map(self.add_state, states))
          
 
     def add_edge(self, edge):
-        """
-    
-        Arguments:
-        - `self`:
-        - `edge`:
-        """
         if(type(edge) == Action):
             self._edges.append(edge)
             
 
     def add_edges(self, edges):
-        """
-    
-        Arguments:
-        - `self`:
-        - `edges`:
-        """
         list(map(self.add_edge, edges))
 
 
        
     def get_all_connected_edges(self, state):
-        """
-        
-        Arguments:
-        - `states`:
-        """
-        
         return [x for x in self._edges if x._source == state]
 
 
         
     def get_all_connected_states(self, edges):
-        """
-        Arguments:
-        - `self`:
-        - `edges`:
-        """
         return [x._destination for x in edges]
 
 
@@ -102,8 +61,6 @@ class StateGraph(object):
     # Now V in terms of itself recursively
 
     def value_function_of_all_states(self):
-        """
-        """
         tps = self.transition_probability_matrix()
         transition_probability_matrix = np.array(tps)
         num_states = len(self._states)
@@ -114,11 +71,6 @@ class StateGraph(object):
 
 
     def get_lookahead_reward(self, action):
-        """
-    
-    Arguments:
-    - `action`:
-    """
         destination = action._destination
         actions_from_destination = self.get_all_connected_edges(destination)
         lookahead_reward = 0
@@ -131,11 +83,6 @@ class StateGraph(object):
 
 
     def bellman_expectation_for_state(self, index):
-        """
-        
-        Arguments:
-        - `self`:
-        """
         state = self._states[index]
         connected_edges = self.get_all_connected_edges(state)
 
@@ -152,6 +99,10 @@ class StateGraph(object):
         - `index`: Index of the action whose optimal action
         value has to be calculated
         """
+        action = self._edges[index]
+        states_connected = self.get_all_connected_states(action)
+
+        
         pass
 
 

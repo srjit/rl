@@ -7,22 +7,12 @@ __version__ = "0.0.1"
 class State(object):
     
     def __init__(self, _id, name, reward):
-        """
-        
-        Arguments:
-        - `name`: Name of the state
-        - `reward`: Reward for the state
-        """
         self._id = _id
         self._name = name
         self._reward = reward
 
     
     def _print(self):
-        """
-        Arguments:
-        - `self`:
-        """
         print("{" +
               " Id: "+ str(self._id) +
               "Name: "+ self._name +
